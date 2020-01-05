@@ -6,6 +6,7 @@ CPE-649 Software Studio
 [![Build status](https://travis-ci.org/sentinel-hub/sentinel2-cloud-detector.svg?branch=master)](https://travis-ci.org/sentinel-hub/sentinel2-cloud-detector)
 [![Overall downloads](https://pepy.tech/badge/s2cloudless)](https://pepy.tech/project/s2cloudless)
 [![Last month downloads](https://pepy.tech/badge/s2cloudless/month)](https://pepy.tech/project/s2cloudless)
+[![Code coverage](https://codecov.io/gh/sentinel-hub/sentinel2-cloud-detector/branch/master/graph/badge.svg)](https://codecov.io/gh/sentinel-hub/sentinel2-cloud-detector)
 
 # Sentinel Hub's cloud detector for Sentinel-2 imagery
 
