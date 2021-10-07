@@ -34,6 +34,8 @@ def plot_probabilities(image, proba, factor=3.5/255):
     plt.figure(figsize=(15, 15))
     ax = plt.subplot(1, 2, 1)
     ax.imshow(np.clip(image * factor, 0, 1))
+    plt.show
     ax = plt.subplot(1, 2, 2)
     ax.imshow(proba, cmap=plt.cm.inferno)
+    plt.show
 
