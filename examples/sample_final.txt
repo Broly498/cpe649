@@ -1,0 +1,401 @@
+Image data client connected
+Processing image: 1
+Candidate image: 1
+Computing cloud masks
+Cloud masks computed. Time: 69.4231948852539
+Computed cloud pixels/total pixels: 132912/452254
+Cloud ratio: 0.29388794792306977
+Image accepted, transmitting...
+
+Processing image: 2
+Candidate image: 2
+Computing cloud masks
+Cloud masks computed. Time: 16.24067497253418
+Computed cloud pixels/total pixels: 0/446208
+Cloud ratio: 0.0
+Image accepted, transmitting...
+
+Processing image: 3
+Candidate image: 3
+Computing cloud masks
+Cloud masks computed. Time: 62.00834608078003
+Computed cloud pixels/total pixels: 204614/460872
+Cloud ratio: 0.4439714280754743
+Image accepted, transmitting...
+
+Processing image: 4
+Candidate image: 4
+Computing cloud masks
+Cloud masks computed. Time: 68.16039705276489
+Computed cloud pixels/total pixels: 0/492795
+Cloud ratio: 0.0
+Image accepted, transmitting...
+
+Processing image: 5
+Candidate image: 5
+Computing cloud masks
+Cloud masks computed. Time: 59.47305679321289
+Computed cloud pixels/total pixels: 188055/464260
+Cloud ratio: 0.4050639727738767
+Image accepted, transmitting...
+
+Processing image: 6
+Candidate image: 6
+Computing cloud masks
+Cloud masks computed. Time: 41.19873595237732
+Computed cloud pixels/total pixels: 33674/450802
+Cloud ratio: 0.07469798270637663
+Image accepted, transmitting...
+
+Processing image: 7
+Candidate image: 7
+Computing cloud masks
+Cloud masks computed. Time: 65.75590109825134
+Computed cloud pixels/total pixels: 157018/469125
+Cloud ratio: 0.33470397015720754
+Image accepted, transmitting...
+
+Processing image: 8
+Candidate image: 8
+Computing cloud masks
+Cloud masks computed. Time: 67.43287301063538
+Computed cloud pixels/total pixels: 17265/562116
+Cloud ratio: 0.030714300962790597
+Image accepted, transmitting...
+
+Processing image: 9
+Candidate image: 9
+Computing cloud masks
+Cloud masks computed. Time: 58.24799108505249
+Computed cloud pixels/total pixels: 27135/470976
+Cloud ratio: 0.057614400733795354
+Image accepted, transmitting...
+
+Processing image: 10
+Candidate image: 10
+Computing cloud masks
+Cloud masks computed. Time: 45.65062475204468
+Computed cloud pixels/total pixels: 409540/410720
+Cloud ratio: 0.9971269964939619
+Image rejected
+
+Processing image: 11
+Candidate image: 11
+Computing cloud masks
+Cloud masks computed. Time: 61.55106520652771
+Computed cloud pixels/total pixels: 366/562212
+Cloud ratio: 0.0006509999786557385
+Image accepted, transmitting...
+
+Processing image: 12
+Candidate image: 12
+Computing cloud masks
+Cloud masks computed. Time: 57.569748878479004
+Computed cloud pixels/total pixels: 431305/517104
+Cloud ratio: 0.8340778644141217
+Image rejected
+
+Processing image: 13
+Candidate image: 13
+Computing cloud masks
+Cloud masks computed. Time: 67.55055975914001
+Computed cloud pixels/total pixels: 98755/548685
+Cloud ratio: 0.17998487292344423
+Image accepted, transmitting...
+
+Processing image: 14
+Candidate image: 14
+Computing cloud masks
+Cloud masks computed. Time: 66.37408304214478
+Computed cloud pixels/total pixels: 112909/524370
+Cloud ratio: 0.21532314968438315
+Image accepted, transmitting...
+
+Processing image: 15
+Candidate image: 15
+Computing cloud masks
+Cloud masks computed. Time: 51.13458871841431
+Computed cloud pixels/total pixels: 2541/422094
+Cloud ratio: 0.006019986069453724
+Image accepted, transmitting...
+
+Processing image: 16
+Candidate image: 16
+Computing cloud masks
+Cloud masks computed. Time: 43.91381645202637
+Computed cloud pixels/total pixels: 492228/492228
+Cloud ratio: 1.0
+Image rejected
+
+Processing image: 17
+Candidate image: 17
+Computing cloud masks
+Cloud masks computed. Time: 55.12818241119385
+Computed cloud pixels/total pixels: 0/427770
+Cloud ratio: 0.0
+Image accepted, transmitting...
+
+Processing image: 18
+Candidate image: 18
+Computing cloud masks
+Cloud masks computed. Time: 43.98916721343994
+Computed cloud pixels/total pixels: 0/414504
+Cloud ratio: 0.0
+Image accepted, transmitting...
+
+Processing image: 19
+Candidate image: 19
+Computing cloud masks
+Cloud masks computed. Time: 53.413660526275635
+Computed cloud pixels/total pixels: 31745/409800
+Cloud ratio: 0.07746461688628599
+Image accepted, transmitting...
+
+Processing image: 20
+Candidate image: 20
+Computing cloud masks
+Cloud masks computed. Time: 62.99473834037781
+Computed cloud pixels/total pixels: 7497/493500
+Cloud ratio: 0.015191489361702127
+Image accepted, transmitting...
+
+Processing image: 21
+Candidate image: 21
+Computing cloud masks
+Cloud masks computed. Time: 46.96926832199097
+Computed cloud pixels/total pixels: 9521/418296
+Cloud ratio: 0.02276139384550653
+Image accepted, transmitting...
+
+Processing image: 22
+Candidate image: 22
+Computing cloud masks
+Cloud masks computed. Time: 38.234355211257935
+Computed cloud pixels/total pixels: 19121/449414
+Cloud ratio: 0.042546516129893595
+Image accepted, transmitting...
+
+Processing image: 23
+Candidate image: 23
+Computing cloud masks
+Cloud masks computed. Time: 51.382978439331055
+Computed cloud pixels/total pixels: 314534/411928
+Cloud ratio: 0.7635654774620807
+Image rejected
+
+Processing image: 24
+Candidate image: 24
+Computing cloud masks
+Cloud masks computed. Time: 56.54433727264404
+Computed cloud pixels/total pixels: 0/492788
+Cloud ratio: 0.0
+Image accepted, transmitting...
+
+Processing image: 25
+Candidate image: 25
+Computing cloud masks
+Cloud masks computed. Time: 64.75855159759521
+Computed cloud pixels/total pixels: 161876/539462
+Cloud ratio: 0.3000693283308185
+Image accepted, transmitting...
+
+Processing image: 26
+Candidate image: 26
+Computing cloud masks
+Cloud masks computed. Time: 64.01870012283325
+Computed cloud pixels/total pixels: 3224/537768
+Cloud ratio: 0.0059951503250472325
+Image accepted, transmitting...
+
+Processing image: 27
+Candidate image: 27
+Computing cloud masks
+Cloud masks computed. Time: 70.0115315914154
+Computed cloud pixels/total pixels: 35480/556494
+Cloud ratio: 0.06375630285322034
+Image accepted, transmitting...
+
+Processing image: 28
+Candidate image: 28
+Computing cloud masks
+Cloud masks computed. Time: 50.84742593765259
+Computed cloud pixels/total pixels: 0/424691
+Cloud ratio: 0.0
+Image accepted, transmitting...
+
+Processing image: 29
+Candidate image: 29
+Computing cloud masks
+Cloud masks computed. Time: 23.703107595443726
+Computed cloud pixels/total pixels: 444150/444150
+Cloud ratio: 1.0
+Image rejected
+
+Processing image: 30
+Candidate image: 30
+Computing cloud masks
+Cloud masks computed. Time: 45.79444479942322
+Computed cloud pixels/total pixels: 509067/509067
+Cloud ratio: 1.0
+Image rejected
+
+Processing image: 31
+Candidate image: 31
+Computing cloud masks
+Cloud masks computed. Time: 61.459739446640015
+Computed cloud pixels/total pixels: 302898/533022
+Cloud ratio: 0.5682654749710143
+Image rejected
+
+Processing image: 32
+Candidate image: 32
+Computing cloud masks
+Cloud masks computed. Time: 54.98266077041626
+Computed cloud pixels/total pixels: 438499/489600
+Cloud ratio: 0.8956270424836601
+Image rejected
+
+Processing image: 33
+Candidate image: 33
+Computing cloud masks
+Cloud masks computed. Time: 59.17170858383179
+Computed cloud pixels/total pixels: 412407/524725
+Cloud ratio: 0.7859488303397018
+Image rejected
+
+Processing image: 34
+Candidate image: 34
+Computing cloud masks
+Cloud masks computed. Time: 35.89545392990112
+Computed cloud pixels/total pixels: 487330/504768
+Cloud ratio: 0.9654534360339799
+Image rejected
+
+Processing image: 35
+Candidate image: 35
+Computing cloud masks
+Cloud masks computed. Time: 47.42315411567688
+Computed cloud pixels/total pixels: 502056/502056
+Cloud ratio: 1.0
+Image rejected
+
+Processing image: 36
+Candidate image: 36
+Computing cloud masks
+Cloud masks computed. Time: 47.52767896652222
+Computed cloud pixels/total pixels: 503208/503208
+Cloud ratio: 1.0
+Image rejected
+
+Processing image: 37
+Candidate image: 37
+Computing cloud masks
+Cloud masks computed. Time: 40.50915575027466
+Computed cloud pixels/total pixels: 507012/507012
+Cloud ratio: 1.0
+Image rejected
+
+Processing image: 38
+Candidate image: 38
+Computing cloud masks
+Cloud masks computed. Time: 47.30445718765259
+Computed cloud pixels/total pixels: 510004/510004
+Cloud ratio: 1.0
+Image rejected
+
+Processing image: 39
+Candidate image: 39
+Computing cloud masks
+Cloud masks computed. Time: 65.16243743896484
+Computed cloud pixels/total pixels: 552469/565295
+Cloud ratio: 0.9773109615333587
+Image rejected
+
+Processing image: 40
+Candidate image: 40
+Computing cloud masks
+Cloud masks computed. Time: 45.33637094497681
+Computed cloud pixels/total pixels: 388676/403522
+Cloud ratio: 0.9632089452371866
+Image rejected
+
+Processing image: 41
+Candidate image: 41
+Computing cloud masks
+Cloud masks computed. Time: 50.13119983673096
+Computed cloud pixels/total pixels: 266686/406119
+Cloud ratio: 0.6566695968423049
+Image rejected
+
+Processing image: 42
+Candidate image: 42
+Computing cloud masks
+Cloud masks computed. Time: 31.26203989982605
+Computed cloud pixels/total pixels: 487976/487976
+Cloud ratio: 1.0
+Image rejected
+
+Processing image: 43
+Candidate image: 43
+Computing cloud masks
+Cloud masks computed. Time: 65.07402396202087
+Computed cloud pixels/total pixels: 538500/557157
+Cloud ratio: 0.9665139269541619
+Image rejected
+
+Processing image: 44
+Candidate image: 44
+Computing cloud masks
+Cloud masks computed. Time: 55.589024782180786
+Computed cloud pixels/total pixels: 479865/527250
+Cloud ratio: 0.9101280227596017
+Image rejected
+
+Processing image: 45
+Candidate image: 45
+Computing cloud masks
+Cloud masks computed. Time: 53.55338740348816
+Computed cloud pixels/total pixels: 218946/414948
+Cloud ratio: 0.5276468376760461
+Image rejected
+
+Processing image: 46
+Candidate image: 46
+Computing cloud masks
+Cloud masks computed. Time: 66.34433794021606
+Computed cloud pixels/total pixels: 431375/551988
+Cloud ratio: 0.7814934382631507
+Image rejected
+
+Processing image: 47
+Candidate image: 47
+Computing cloud masks
+Cloud masks computed. Time: 48.168270111083984
+Computed cloud pixels/total pixels: 458660/458660
+Cloud ratio: 1.0
+Image rejected
+
+Processing image: 48
+Candidate image: 48
+Computing cloud masks
+Cloud masks computed. Time: 83.6744532585144
+Computed cloud pixels/total pixels: 245813/442758
+Cloud ratio: 0.5551859029085866
+Image rejected
+
+Processing image: 49
+Candidate image: 49
+Computing cloud masks
+Cloud masks computed. Time: 55.95111417770386
+Computed cloud pixels/total pixels: 501448/510204
+Cloud ratio: 0.982838237254118
+Image rejected
+
+Processing image: 50
+Candidate image: 50
+Computing cloud masks
+Cloud masks computed. Time: 72.03005456924438
+Computed cloud pixels/total pixels: 130221/540714
+Cloud ratio: 0.24083156715010154
+Image accepted, transmitting...
+
