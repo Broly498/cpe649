@@ -37,8 +37,8 @@ clip_range=(0, 1)
 
 result_file_name = "runtime_image.dat"
 
-#TODO Up range to 26 for full run
-for i in range(1,26):
+#TODO Up range to 51 for full run
+for i in range(1,51):
     print("Processing image: " + str(i))
     image_file_name = "image_" + str(i) + ".dat"
     data_file_name = "data_" + str(i) + ".dat"
@@ -83,7 +83,7 @@ for i in range(1,26):
     #cloud_prob = cloud_detector.get_cloud_probability_maps(full_data)
     #print("Cloud probabilities computed. Time: %s" % (time.time() - start_time))
 
-    print("\nComputing cloud masks")
+    print("Computing cloud masks")
     start_time = time.time()
     cloud_mask = cloud_detector.get_cloud_masks(full_data)
     print("Cloud masks computed. Time: %s" % (time.time() - start_time))
@@ -106,11 +106,11 @@ for i in range(1,26):
     plt.show()
     '''
 
-    if cloud_ratio < 50.0:
-        print("Image accepted, transmitting...")
+    if cloud_ratio < 0.5:
+        print("Image accepted, transmitting...\n")
         npSocket.send(image_data)
         
     else:
-        print("Image rejected")
+        print("Image rejected\n")
 
 npSocket.close()

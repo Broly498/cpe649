@@ -6,8 +6,8 @@ from s2cloudless import get_s2_evalscript
 #from plotting_utils import plot_image
 import random
 
-CLIENT_ID = "86ad3cec-1e7e-4b43-8145-1684ac658740"
-CLIENT_SECRET = "ny9tEbtGx075%;Bm~3E5M_gYAFiu/j0)vQc4.4E_"
+CLIENT_ID = "e219d2c4-75d0-4d89-9c1d-85f6ece41395"
+CLIENT_SECRET = "?Zkj<NHNxZKDqbvKtTReOaA|:**.xt7N96puO;pa"
 config = SHConfig()
 if CLIENT_ID and CLIENT_SECRET:
     config.sh_client_id = CLIENT_ID
