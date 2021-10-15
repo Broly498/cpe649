@@ -10,22 +10,9 @@
 
 #import matplotlib.pyplot as plt
 import numpy as np
-
 import time
-
-#from sentinelhub import SHConfig, BBox, CRS, SentinelHubRequest, DataCollection, \
-#    MimeType, bbox_to_dimensions
-
 from s2cloudless import S2PixelCloudDetector
-
 from numpysocket import NumpySocket
-
-#s = socket.socket()
-#s.bind(('localhost', 55555))
-#s.listen(1)
-#print("Waiting to connect to client...")
-#conn, addr = s.accept()
-#print("Connected to: " + str(addr[0]))
 
 npSocket = NumpySocket()
 npSocket.startClient('localhost', 55555)
@@ -37,7 +24,6 @@ clip_range=(0, 1)
 
 result_file_name = "runtime_image.dat"
 
-#TODO Up range to 51 for full run
 for i in range(1,51):
     print("Processing image: " + str(i))
     image_file_name = "image_" + str(i) + ".dat"
@@ -52,8 +38,6 @@ for i in range(1,51):
     data_file = open(data_file_name, "rb")
     full_data = np.load(data_file)
     data_file.close()
-
-    #mask = full_data[..., -1]
 
     # ### Initialize the cloud detector and make classification
     # 
