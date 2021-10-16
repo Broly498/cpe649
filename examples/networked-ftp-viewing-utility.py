@@ -54,21 +54,24 @@ while True:
     elif choice == 3 or choice == 4:
         data_num = input("Enter number for chosen data. Ex) For data_12.dat enter '12': ")
         data_file_name = "data_" + data_num + ".dat"
+        tag_file_name = "tag_" + data_num
         try: 
             files = ftp_server.nlst()
         except:
             print("Error fetching files, directory may be empty")
         if data_file_name in files:
             print("Processing...")
-            byteHolder = io.BytesIO()
-            ftp_server.retrbinary('RETR ' + data_file_name, byteHolder.write)
-            byteHolder.seek(0)
-            encrypted_compressed_data = byteHolder.read()
+            data_bytes = io.BytesIO()
+            ftp_server.retrbinary('RETR ' + data_file_name, data_bytes.write)
+            data_bytes.seek(0)
+            encrypted_compressed_data = data_bytes.read()
             print("Encrypted/compressed data fetched. Size: " + str(sys.getsizeof(encrypted_compressed_data)))
             #Unencrypt the data
             #Get the tag
-            tagfile = open("tag_" + data_num, "rb")
-            tag = tagfile.read()
+            tag_bytes = io.BytesIO()
+            ftp_server.retrbinary('RETR ' + tag_file_name, tag_bytes.write)
+            tag_bytes.seek(0)
+            tag = tag_bytes.read()
             #Get the key
             keyfile = open(key_file, "rb")
             key = keyfile.read()
@@ -100,18 +103,24 @@ while True:
         number_of_data_files = len([i for i in files if ".dat" in i])
         for data_num in range(1, number_of_data_files+1):
             data_file_name = "data_" + str(data_num) + ".dat"
+            tag_file_name = "tag_" + str(data_num)
             if data_file_name not in files:
                 print(data_file_name + " was not found. Cannot convert to jpg")
                 continue
-            byteHolder = io.BytesIO()
-            ftp_server.retrbinary('RETR ' + data_file_name, byteHolder.write)
-            byteHolder.seek(0)
-            encrypted_compressed_data = byteHolder.read()
+            data_bytes = io.BytesIO()
+            ftp_server.retrbinary('RETR ' + data_file_name, data_bytes.write)
+            data_bytes.seek(0)
+            encrypted_compressed_data = data_bytes.read()
             print("Encrypted/compressed data fetched. Size: " + str(sys.getsizeof(encrypted_compressed_data)))
             #Unencrypt the data
             #Get the tag
-            tagfile = open("tag_" + str(data_num), "rb")
-            tag = tagfile.read()
+            if tag_file_name not in files:
+                print(tag_file_name + " was not found. Cannot convert to jpg")
+                continue
+            tag_bytes = io.BytesIO()
+            ftp_server.retrbinary('RETR ' + tag_file_name, tag_bytes.write)
+            tag_bytes.seek(0)
+            tag = tag_bytes.read()
             #Get the key
             keyfile = open(key_file, "rb")
             key = keyfile.read()
