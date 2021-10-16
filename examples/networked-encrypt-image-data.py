@@ -16,12 +16,11 @@ ftp_server = ftplib.FTP()
 # create a mount point for the virtual path '/'.
 # Also also remember you will probably have to disable
 # windows defender firewall for FTP server on windows.
-ftp_server.connect('192.168.1.16',21)
+ftp_server.connect('192.168.1.13',21)
 ftp_server.login('user','password')
 
 file_name = "runtime_compressed.dat.gz"
 key_file = "key_file.bin"
-tag_file = "tag_file.bin"
 data_end = b'TRANSMISSION_STOP'
 i = 1
 
@@ -56,11 +55,10 @@ while True:
     ciphertext, tag = cipher.encrypt_and_digest(compressed_data)
     f = io.BytesIO(ciphertext)
     ftp_server.storbinary('STOR data_' + str(i) + '.dat', f)
-    i = i + 1
-
     # Store updated tag file to be used for decryption
     # NOTE THIS MUST BE DONE ONCE IN YOUR ENVIRONMENT FOR DECRYPT TO WORK
-    t_file = open(tag_file, 'wb')
+    t_file = open('tag_' + str(i), 'wb')
     t_file.write(tag)
     t_file.close()
     
+    i = i + 1
