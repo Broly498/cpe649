@@ -53,12 +53,10 @@ while True:
     key = keyfile.read()
     cipher = AES.new(key, AES.MODE_SIV)
     ciphertext, tag = cipher.encrypt_and_digest(compressed_data)
-    f = io.BytesIO(ciphertext)
-    ftp_server.storbinary('STOR data_' + str(i) + '.dat', f)
-    # Store updated tag file to be used for decryption
-    # NOTE THIS MUST BE DONE ONCE IN YOUR ENVIRONMENT FOR DECRYPT TO WORK
-    t_file = open('tag_' + str(i), 'wb')
-    t_file.write(tag)
-    t_file.close()
-    
+    # Store encrypted data and tag on ftp
+    f_cipher = io.BytesIO(ciphertext)
+    ftp_server.storbinary('STOR data_' + str(i) + '.dat', f_cipher)
+    f_tag = io.BytesIO(tag)
+    ftp_server.storbinary('STOR tag_' + str(i), f_tag)
+
     i = i + 1
