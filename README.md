@@ -9,6 +9,8 @@ In addition, the necessary python programs have been precompiled as executables 
 
 https://drive.google.com/drive/folders/1puyj_BtT5TnHnwZBFc1dmSyPdyPqO0Ku?usp=sharing 
 
+An additional library was used to perform power measurements. The git repository for that is located here: https://github.com/regisin/ina219.git
+
 ## License - Copied from original repo
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
