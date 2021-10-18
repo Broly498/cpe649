@@ -12,6 +12,9 @@
 # ### Imports
 
 import sys
+
+sys.path.append('../dependencies/sentinel2-cloud-detector/examples/')
+
 import datetime as dt
 
 import matplotlib.pyplot as plt
