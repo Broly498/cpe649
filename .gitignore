@@ -138,3 +138,7 @@ ENV/
 
 # IDE config
 .idea/
+
+# Pi Hat Files
+powerMeasurementResults/
+.csv
