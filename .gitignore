@@ -140,4 +140,5 @@ ENV/
 .idea/
 
 # Pi Hat Files
+powerMeasurementResults/
 .csv
