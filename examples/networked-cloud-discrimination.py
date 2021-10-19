@@ -8,12 +8,13 @@
 # 
 # ### Imports
 
+import os
+
 #import matplotlib.pyplot as plt
 import numpy as np
 import time
 from s2cloudless import S2PixelCloudDetector
 from numpysocket import NumpySocket
-
 npSocket = NumpySocket()
 npSocket.startClient('localhost', 55555)
 print("Image data client connected")
@@ -22,12 +23,14 @@ print("Image data client connected")
 factor=3.5/255
 clip_range=(0, 1)
 
-result_file_name = "runtime_image.dat"
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/"
+
+result_file_name = file_path + "runtime_image.dat"
 
 for i in range(1,51):
     print("Processing image: " + str(i))
-    image_file_name = "image_" + str(i) + ".dat"
-    data_file_name = "data_" + str(i) + ".dat"
+    image_file_name = file_path + "image_" + str(i) + ".dat"
+    data_file_name = file_path + "data_" + str(i) + ".dat"
 
     image_file = open(image_file_name, "rb")
     image_data = np.load(image_file)
@@ -53,7 +56,7 @@ for i in range(1,51):
         average_over=4,
         dilation_size=2,
         all_bands=False,
-        model_filename = 'cloud_detector_model.txt'
+        model_filename = file_path + 'cloud_detector_model.txt'
     )
 
     # #### Run the classification
