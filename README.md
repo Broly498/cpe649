@@ -22,6 +22,8 @@ Shell Scripts:
  * multithreaded_test.sh
     * Runs the sentinel2-cloud detector tests that were exported using the Jupyter notebook.
     * This script spawns four tests and launches them on their own unique core.
+ * killImgGenAndFtpPythonProcesses.sh
+    * Kills all Python processes (The Network Encryption, Network Compression, and Network Cloud Discrimination are all Python processes).
  * runImgGenAndFtpWithPiHat.sh
     * Launches a full image generation experiment.
     * The script performs the following:
@@ -29,6 +31,9 @@ Shell Scripts:
        2) Runs Network Compression Python Script (Compresses all encrypted files)
        3) Runs Network Cloud Discrimination Python Script (Generates sentinel2-cloud detector image files) 
        4) Runs Pi Hat Profiler Executable (Records power measurements from the Raspberry Pi)
+    * The script expects TWO COMMAND-LINE ARGUMENTS:
+        * argv1 - FTP Server IP Address
+        * argv2 - FTP Server Port
 
 Supplemental Information:
  * The necessary python programs have been precompiled as executables and packaged with all necessary runtime files for your convenience.

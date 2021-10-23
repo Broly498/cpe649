@@ -1,9 +1,19 @@
+# This script accepts two command-line argument.
+# argv1 = ftpServerIpAddress
+# argv2 = ftpServerPort
+
 from Crypto.Cipher import AES
 import socket as socket
 import sys
 import ftplib
 import io
 import os
+
+numberOfCommandLineArguments = len(sys.argv) - 1
+
+if numberOfCommandLineArguments != 2:
+    print(numberOfCommandLineArguments)
+    raise Exception("Two command-line arguments must be specified (argv1 = FTP Server IP Address, argv2 = FTP Server Socket)...")
 
 compSocket = socket.socket()
 compSocket.bind(('localhost',55556))
@@ -17,7 +27,12 @@ ftp_server = ftplib.FTP()
 # create a mount point for the virtual path '/'.
 # Also also remember you will probably have to disable
 # windows defender firewall for FTP server on windows.
-ftp_server.connect('192.168.1.9',21)
+
+# Parse FTP Server IP Address and Port
+ftpServerIpAddress = sys.argv[1]
+ftpServerPort = int(sys.argv[2])
+
+ftp_server.connect(ftpServerIpAddress,ftpServerPort)
 ftp_server.login('user','password')
 
 file_path = os.path.dirname(os.path.realpath(__file__)) + "/"
