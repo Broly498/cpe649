@@ -3,6 +3,22 @@
 #include <math.h>
 #include "src/ina219.h"
 
+// kulick
+#include <stdio.h>
+#include <time.h>
+#define TENMILLION 10000000
+#define ONEMILLION 1000000
+#define ONEBILLION 1000000000
+time_t rawtime;
+struct timespec finetime;
+long int val_old;
+long int sec_old;
+long int ns_old;
+long int val;
+long int sec;
+long int ns;
+int repetition = 0;
+// end kulick
 
 int main(int argc, char *argv[])
 {
@@ -51,45 +67,113 @@ int main(int argc, char *argv[])
         INA219 i(SHUNT_OHMS, MAX_EXPECTED_AMPS);
         i.configure(RANGE_16V, GAIN_8_320MV, ADC_12BIT, ADC_12BIT);
 
-        std::cout << "time_s,bus_voltage_V,supply_voltage_V,shunt_voltage_mV,current_mA,power_mW,discharged_C" << std::endl;
+//kulick
+
+        std::cout << "NS_ABS, time_s,current_mA,power_mW" << std::endl;
 
         int c = 0;
+
+// get the start time of the loop
+
+ clock_gettime(CLOCK_REALTIME, &finetime);
+  val_old  = finetime.tv_nsec;
+  sec_old =  finetime.tv_sec;
+  ns_old  = val_old + ONEBILLION*sec_old;
+  ns      = ns_old;
+// end kulick
+
         while(true)
         {
             float current = i.current();
-            std::cout << (roundf(c*(INTERVAL/1000.0) * 1000) / 1000) << ","
-                    << (roundf(i.voltage() * 1000) / 1000) << ","
-                    << (roundf(i.supply_voltage() * 100000) / 100000) << ","
-                    << (roundf(i.shunt_voltage() * 100) / 100) << ","
+//kulick
+            std::cout << ns << ","
+                    << (roundf(c*(INTERVAL/1000.0) * 1000) / 1000) << ","
                     << (roundf(current * 1000) / 1000) << ","
                     << (roundf(i.power() * 100) / 100) << ","
-                    << (roundf( ((current/1000.0)*(INTERVAL/1000.0)) * 1000000) / 1000000) << std::endl;
+                    << std::endl;
             c++;
-            usleep(INTERVAL * 1000);
+// kulick
+
+ // wait until 10 ms has passed
+ // get the current time
+ while((ns - ns_old) <= TENMILLION)
+ {
+ clock_gettime(CLOCK_REALTIME, &finetime);
+  val = finetime.tv_nsec;
+  sec =  finetime.tv_sec;
+  ns   = val + ONEBILLION*sec;
+ }
+
+ ns_old = ns;
+
+
+
+
+            //usleep(INTERVAL * 1000);
+// end kulick
         }
     } else {
+
+// kulick
+
+// get the start time of the loop
+
+ clock_gettime(CLOCK_REALTIME, &finetime);
+  val_old  = finetime.tv_nsec;
+  sec_old =  finetime.tv_sec;
+  ns_old  = val_old + ONEBILLION*sec_old;
+  ns      = ns_old;
+// end kulick
+
+
+
         float remaining_charge = INITIAL_CHARGE;
         INA219 i(SHUNT_OHMS, MAX_EXPECTED_AMPS);
         i.configure(RANGE_16V, GAIN_8_320MV, ADC_12BIT, ADC_12BIT);
-        std::cout << "time_s,bus_voltage_V,supply_voltage_V,shunt_voltage_mV,current_mA,power_mW,remaining_C,remaining_percentage" << std::endl;
+//kulick
+        std::cout << "NS_ABS, time_s,current_mA,power_mW" << std::endl;
         int c = 0;
+
+
+// kulick
         while(true)
         {
             float current = i.current();
-            remaining_charge = remaining_charge - ( (current/1000.0) * (INTERVAL/1000.0) );
-            float percentage = (100.0*remaining_charge) / INITIAL_CHARGE;
-            std::cout << (roundf(c*(INTERVAL/1000.0) * 1000) / 1000) << ","
-                    << (roundf(i.voltage() * 1000) / 1000) << ","
-                    << (roundf(i.supply_voltage() * 100000) / 100000) << ","
-                    << (roundf(i.shunt_voltage() * 100) / 100) << ","
+//kulick
+//            remaining_charge = remaining_charge - ( (current/1000.0) * (INTERVAL/1000.0) );
+ //           float percentage = (100.0*remaining_charge) / INITIAL_CHARGE;
+            std::cout << ns << ","
+                    << (roundf(c*(INTERVAL/1000.0) * 1000) / 1000) << ","
                     << (roundf(current * 1000) / 1000) << ","
-                    << (roundf(i.power() * 100) / 100) << ","
-                    << (roundf(remaining_charge * 100) / 100) << ","
-                    << (roundf(percentage * 10000) / 10000) << std::endl;
+                    << (roundf(i.power() * 100) / 100) << "," << std::endl;
             c++;
-            usleep(INTERVAL * 1000);
-        }
-    }
+// kulick
+
+
+ while((ns - ns_old) <= TENMILLION)
+ {
+ clock_gettime(CLOCK_REALTIME, &finetime);
+  val = finetime.tv_nsec;
+  sec =  finetime.tv_sec;
+  ns   = val + ONEBILLION*sec;
+ }
+
+ ns_old = ns;
+
+
+}
+
+
+            //usleep(INTERVAL * 1000);
+
+ //  end kulick
+      }
+
+
+
+
+
+//            usleep(INTERVAL * 1000);
 
 	return 0;
 }
