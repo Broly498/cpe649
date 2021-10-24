@@ -3,6 +3,7 @@ import socket as socket
 import sys
 import ftplib
 import io
+import os
 
 compSocket = socket.socket()
 compSocket.bind(('localhost',55556))
@@ -16,11 +17,13 @@ ftp_server = ftplib.FTP()
 # create a mount point for the virtual path '/'.
 # Also also remember you will probably have to disable
 # windows defender firewall for FTP server on windows.
-ftp_server.connect('192.168.1.13',21)
+ftp_server.connect('192.168.1.9',21)
 ftp_server.login('user','password')
 
-file_name = "runtime_compressed.dat.gz"
-key_file = "key_file.bin"
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/"
+
+file_name = file_path + "runtime_compressed.dat.gz"
+key_file = file_path + "key_file.bin"
 data_end = b'TRANSMISSION_STOP'
 i = 1
 

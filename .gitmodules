@@ -1,0 +1,4 @@
+[submodule "dependencies/sentinel2-cloud-detector"]
+	path = dependencies/sentinel2-cloud-detector
+	url = git@github.com:Broly498/sentinel2-cloud-detector.git
+	branch = v1.5.0_cpe657+v1
