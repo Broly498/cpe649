@@ -15,8 +15,9 @@ if numberOfCommandLineArguments != 2:
     print(numberOfCommandLineArguments)
     raise Exception("Two command-line arguments must be specified (argv1 = FTP Server IP Address, argv2 = FTP Server Socket)...")
 
+# This is the host of the compressed data link
 compSocket = socket.socket()
-compSocket.bind(('localhost',55556))
+compSocket.bind(('', 55556))
 compSocket.listen(1)
 print("Waiting for client to connect...")
 client_socket, client_address = compSocket.accept()

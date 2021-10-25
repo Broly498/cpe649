@@ -9,15 +9,21 @@
 # ### Imports
 
 import os
-
+import sys
 #import matplotlib.pyplot as plt
 import numpy as np
 import time
 from s2cloudless import S2PixelCloudDetector
 from numpysocket import NumpySocket
+
+# We are connecting to the image data link
 npSocket = NumpySocket()
-npSocket.startClient('localhost', 55555)
-print("Image data client connected")
+if len(sys.argv) == 2:
+    npSocket.startClient(sys.argv[1], 55555)
+    print("Image data client connected to " + sys.argv[1])
+else:
+    npSocket.startClient('localhost', 55555)
+    print("Image data client connected to localhost")
 
 # Factor and clip used to increase visibility for plotting
 factor=3.5/255
