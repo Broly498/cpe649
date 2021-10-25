@@ -5,13 +5,19 @@ import socket as socket
 import sys
 from io import BytesIO
 
+# This is the host of the image data link
 npSocket = NumpySocket()
 npSocket.startServer(55555)
 print("Image data server started")
 
+# We are connecting to the compressed data link
 compSocket = socket.socket()
-compSocket.connect(('localhost', 55556))
-print("Compression data client connected")
+if len(sys.argv) == 2:
+    compSocket.connect((sys.argv[1], 55556))
+    print("Compression data client connected to " + sys.argv[1])
+else:
+    compSocket.connect(('localhost', 55556))
+    print("Compression data client connected to localhost")
 
 file_name = "runtime_image.dat"
 compressed_file_name = "runtime_compressed.dat.gz"
