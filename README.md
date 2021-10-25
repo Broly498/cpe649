@@ -31,9 +31,11 @@ Shell Scripts:
        2) Runs Network Compression Python Script (Compresses all encrypted files)
        3) Runs Network Cloud Discrimination Python Script (Generates sentinel2-cloud detector image files) 
        4) Runs Pi Hat Profiler Executable (Records power measurements from the Raspberry Pi)
-    * The script expects TWO COMMAND-LINE ARGUMENTS:
-        * argv1 - FTP Server IP Address
-        * argv2 - FTP Server Port
+    * The script expects FOUR COMMAND-LINE ARGUMENTS:
+        * argv1 - FTP Server IP Address (Required)
+        * argv2 - FTP Server Port (Required)
+        * argv3 - Compression Data Client IP Address (Optional - Defaults to localhost if not supplied.)
+        * argv4 - Image Data Client IP Address (Optional - Defaults to localhost if not supplied.)
 
 Supplemental Information:
  * The necessary python programs have been precompiled as executables and packaged with all necessary runtime files for your convenience.
