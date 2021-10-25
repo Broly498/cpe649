@@ -17,7 +17,7 @@ ftp_server = ftplib.FTP()
 # create a mount point for the virtual path '/'.
 # Also also remember you will probably have to disable
 # windows defender firewall for FTP server on windows.
-ftp_server.connect('192.168.1.9',21)
+ftp_server.connect('192.168.68.104',21)
 ftp_server.login('user','password')
 
 file_path = os.path.dirname(os.path.realpath(__file__)) + "/"
