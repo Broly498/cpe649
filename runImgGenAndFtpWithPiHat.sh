@@ -40,7 +40,7 @@ mkdir -p $PI_HAT_POWER_MEASUREMENTS_OUTPUT_DIRECTORY
 
 current_time=$(date "+%Y_%m_%d-%H_%M_%S")
 
-taskset 0x1 python3 $IMAGE_GENERATION_DIRECTORY/networked-encrypt-image-data.py $1 $2  & sleep 10
-taskset 0x2 python3 $IMAGE_GENERATION_DIRECTORY/networked-compress-image-data.py $3 & sleep 10
-taskset 0x4 python3 $IMAGE_GENERATION_DIRECTORY/networked-cloud-discrimination.py $4 & sleep 10
+taskset 0x1 python3 $IMAGE_GENERATION_DIRECTORY/networked-encrypt-image-data.py $ENCRYPTION_DATA_CLIENT_IP_ADDRESS $1 $2  & sleep 10
+taskset 0x2 python3 $IMAGE_GENERATION_DIRECTORY/networked-compress-image-data.py $COMPRESSION_DATA_CLIENT_IP_ADDRESS & sleep 10
+taskset 0x4 python3 $IMAGE_GENERATION_DIRECTORY/networked-cloud-discrimination.py $IMAGE_DATA_CLIENT_IP_ADDRESS & sleep 10
 sudo taskset 0x8 ./$POWER_MEASUREMENT_DIRECTORY/profiler -p -t 10 > $PI_HAT_POWER_MEASUREMENTS_OUTPUT_DIRECTORY/${current_time}_piHatResuls.csv
