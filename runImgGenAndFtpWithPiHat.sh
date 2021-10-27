@@ -3,7 +3,7 @@
 set -x
 set -e
 
-# This script accepts three command-line arguments:
+# This script accepts two command-line arguments:
 # argv1 - FTP Server IP Address
 # argv2 - FTP Server Port
 # argv3 - Compression Data Client IP Address
