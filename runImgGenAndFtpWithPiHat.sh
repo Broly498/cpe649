@@ -3,14 +3,16 @@
 set -x
 set -e
 
-# This script accepts two command-line arguments:
+# This script accepts three command-line arguments:
 # argv1 - FTP Server IP Address
 # argv2 - FTP Server Port
 # argv3 - Compression Data Client IP Address
 # argv4 - Image Data Client IP Address
+# argv5 - Encryption Data Client IP Address
 
 COMPRESSION_DATA_CLIENT_IP_ADDRESS=$3
 IMAGE_DATA_CLIENT_IP_ADDRESS=$4
+ENCRYPTION_DATA_CLIENT_IP_ADDRESS=$5
 
 if [ -z "$COMPRESSION_DATA_CLIENT_IP_ADDRESS" ]
   then
@@ -22,6 +24,12 @@ if [ -z "$IMAGE_DATA_CLIENT_IP_ADDRESS" ]
   then
     echo "Image Data Client IP address was not supplied, defaulting to localhost..."
     IMAGE_DATA_CLIENT_IP_ADDRESS=localhost
+fi
+
+if [ -z "$ENCRYPTION_DATA_CLIENT_IP_ADDRESS" ]
+  then
+    echo "Encryption Data Client IP address was not supplied, defaulting to localhost..."
+    ENCRYPTION_DATA_CLIENT_IP_ADDRESS=localhost
 fi
 
 IMAGE_GENERATION_DIRECTORY=examples

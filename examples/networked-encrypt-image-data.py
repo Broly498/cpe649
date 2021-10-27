@@ -15,19 +15,10 @@ if len(sys.argv) > 1:
     clientIpAddress = sys.argv[1]
 
 if len(sys.argv) > 2:
-    clientPort = sys.argv[2]
+    ftpIpAddress = sys.argv[2]
 
 if len(sys.argv) > 3:
-    ftpIpAddress = sys.argv[3]
-
-if len(sys.argv) > 4:
-    ftpPort = sys.argv[4]
-
-if len(sys.argv) > 5:
-    ftpUsername = sys.argv[5]
-
-if len(sys.argv) > 6:
-    ftpPassword = sys.argv[6]
+    ftpPort = sys.argv[3]
 
 compSocket = socket.socket()
 compSocket.bind((clientIpAddress, clientPort))

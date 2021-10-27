@@ -22,9 +22,6 @@ clientPort = 55555
 if len(sys.argv) > 1:
     clientIpAddress = sys.argv[1]
 
-if len(sys.argv) > 2:
-    clientPort = int(sys.argv[2])
-
 print("Attempting to connect to " + clientIpAddress + ":" + str(clientPort) + ".", flush=True)
 
 isConnected = False

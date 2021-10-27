@@ -8,17 +8,10 @@ from io import BytesIO
 
 clientIpAddress = 'localhost'
 clientPort = 55556
-
 serverPort = 55555
 
 if len(sys.argv) > 1:
     clientIpAddress = sys.argv[1]
-
-if len(sys.argv) > 2:
-    clientPort = int(sys.argv[2])
-
-if len(sys.argv) > 3:
-    serverPort = int(sys.argv[3])
 
 npSocket = NumpySocket()
 print("Starting image data server on port " + str(serverPort) + ".", flush=True)
