@@ -18,7 +18,7 @@ if len(sys.argv) > 2:
     ftpIpAddress = sys.argv[2]
 
 if len(sys.argv) > 3:
-    ftpPort = sys.argv[3]
+    ftpPort = int(sys.argv[3])
 
 compSocket = socket.socket()
 compSocket.bind((clientIpAddress, clientPort))
