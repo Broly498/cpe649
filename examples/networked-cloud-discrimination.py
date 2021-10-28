@@ -25,14 +25,22 @@ if len(sys.argv) > 1:
 print("Attempting to connect to " + clientIpAddress + ":" + str(clientPort) + ".", flush=True)
 
 isConnected = False
-npSocket = NumpySocket()
+retryAttempt = 0
+maximumNumberOfRetries = 10
+npSocket = NumpySocket()	
 while not isConnected:
     try:
         npSocket.startClient(clientIpAddress, clientPort)
         isConnected = True
     except Exception:
-        print("Failed to connect, retrying in 5 seconds", flush=True)
-        time.sleep(5)
+        if retryAttempt >= maximumNumberOfRetries:
+            print("Failed to connect, maximum number of retries exceeded.", flush=True)
+            quit()
+        else:
+            retryAttempt += 1
+            print("Failed to connect, retrying in 5 seconds. Retry attempt " + str(retryAttempt) + " out of " + str(maximumNumberOfRetries) + ".", flush=True)
+            time.sleep(5)
+
 print("Image data client connected", flush=True)
 
 # Factor and clip used to increase visibility for plotting

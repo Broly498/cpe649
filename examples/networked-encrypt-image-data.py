@@ -3,10 +3,11 @@ import socket as socket
 import sys
 import ftplib
 import io
+import os
 
 clientIpAddress = 'localhost'
 clientPort = 55556
-ftpIpAddress = '192.168.1.13'
+ftpIpAddress = 'localhost'
 ftpPort = 21
 ftpUsername = 'user'
 ftpPassword = 'password'
@@ -36,8 +37,10 @@ ftp_server = ftplib.FTP()
 ftp_server.connect(ftpIpAddress, ftpPort)
 ftp_server.login(ftpUsername, ftpPassword)
 
-file_name = "runtime_compressed.dat.gz"
-key_file = "key_file.bin"
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/"
+
+file_name = file_path + "runtime_compressed.dat.gz"
+key_file = file_path + "key_file.bin"
 data_end = b'TRANSMISSION_STOP'
 i = 1
 
