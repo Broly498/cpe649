@@ -28,8 +28,9 @@ fi
 
 if [ -z "$ENCRYPTION_DATA_CLIENT_IP_ADDRESS" ]
   then
-    echo "Encryption Data Client IP address was not supplied, defaulting to localhost..."
-    ENCRYPTION_DATA_CLIENT_IP_ADDRESS=localhost
+    echo "Encryption Data Client IP address was not supplied, defaulting to 0.0.0.0..."
+    ENCRYPTION_DATA_CLIENT_IP_ADDRESS=0.0.0.0
+	echo $ENCRYPTION_DATA_CLIENT_IP_ADDRESS
 fi
 
 IMAGE_GENERATION_DIRECTORY=examples
