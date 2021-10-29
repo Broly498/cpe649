@@ -5,7 +5,7 @@ import ftplib
 import io
 import os
 
-clientIpAddress = 'localhost'
+clientIpAddress = '0.0.0.0'
 clientPort = 55556
 ftpIpAddress = 'localhost'
 ftpPort = 21
