@@ -3,19 +3,14 @@ SRC_DIRECTORY := src
 
 all: profiler
 
-profiler: ina219.so
-	g++ -o $(OUTPUT_DIRECTORY)/profiler $(SRC_DIRECTORY)/ina219.cc profiler.cc
+profiler: ina219
+	g++ -o $(OUTPUT_DIRECTORY)/$@.o -c $@.cc
+	g++ $(OUTPUT_DIRECTORY)/$@.o -o $(OUTPUT_DIRECTORY)/$@ -L$(OUTPUT_DIRECTORY) -l$<
 
-
-ina219.so:
+ina219:
 	mkdir -p $(OUTPUT_DIRECTORY)
-	g++ -o $(OUTPUT_DIRECTORY)/ina219.so -c $(SRC_DIRECTORY)/ina219.cc
-
-# install:
-# 	cp ./build/ina219.so $(PREFIX)
-
-# uninstall:
-
+	g++ -o $(OUTPUT_DIRECTORY)/$@.o -c $(SRC_DIRECTORY)/$@.cc
+	ar rcs $(OUTPUT_DIRECTORY)/lib$@.a $(OUTPUT_DIRECTORY)/$@.o
 
 clean:
 	rm -rf $(OUTPUT_DIRECTORY)/*
