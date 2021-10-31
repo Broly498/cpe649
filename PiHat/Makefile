@@ -1,18 +1,18 @@
-all: test
+OUTPUT_DIRECTORY := build
+SRC_DIRECTORY := src
 
-test: ina219.so
-	g++ -o ./build/profiler ./src/ina219.cc ./profiler.cc
+all: profiler
 
+profiler: ina219
+	g++ -o $(OUTPUT_DIRECTORY)/$@.o -c $@.cc
+	g++ $(OUTPUT_DIRECTORY)/$@.o -o $(OUTPUT_DIRECTORY)/$@ -L$(OUTPUT_DIRECTORY) -l$<
 
-ina219.so:
-	mkdir -p ./build
-	g++ -o ./build/ina219.so -c ./src/ina219.cc
-
-# install:
-# 	cp ./build/ina219.so $(PREFIX)
-
-# uninstall:
-
+ina219:
+	mkdir -p $(OUTPUT_DIRECTORY)
+	g++ -o $(OUTPUT_DIRECTORY)/$@.o -c $(SRC_DIRECTORY)/$@.cc
+	ar rcs $(OUTPUT_DIRECTORY)/lib$@.a $(OUTPUT_DIRECTORY)/$@.o
 
 clean:
-	rm -rf ./build/*
+	rm -rf $(OUTPUT_DIRECTORY)/*
+
+.PHONY: $(OUTPUT_DIRECTORY) $(SRC_DIRECTORY)

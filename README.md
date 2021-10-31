@@ -17,14 +17,13 @@ Repository Contents:
 Shell Scripts:
  * initializeSubmodules.sh
     * Initializes all of the submodule repositories contained inside of the CPE-657 project.
- * buildAllDependencies.sh
-    * Compiles all of the dependencies associated with the CPE-657 project.
+    * NOTE: This script must be executed every time that the repository is cloned for the first time.
+ * Makefile
+    * Compiles the Pi Hat C++ profiler (Make Targets: all, clean).
  * multithreaded_test.sh
     * Runs the sentinel2-cloud detector tests that were exported using the Jupyter notebook.
     * This script spawns four tests and launches them on their own unique core.
- * killImgGenAndFtpPythonProcesses.sh
-    * Kills all Python processes (The Network Encryption, Network Compression, and Network Cloud Discrimination are all Python processes).
- * runImgGenAndFtpWithPiHat.sh
+ * runImageGenerationExperiment_OnePiConfiguration.sh
     * Launches a full image generation experiment.
     * The script performs the following:
        1) Runs Network Encryption Python Script (Encrypts all image files)
@@ -36,6 +35,8 @@ Shell Scripts:
         * argv2 - FTP Server Port (Required)
         * argv3 - Compression Data Client IP Address (Optional - Defaults to localhost if not supplied.)
         * argv4 - Image Data Client IP Address (Optional - Defaults to localhost if not supplied.)
+ * killImageGenerationProcesses.sh
+    * Kills all processes associated with the image generation experiment (Network Encryptor, Network Compressor, Network Cloud Discrimination, and Pi Hat Profiler).
 
 Supplemental Information:
  * The necessary python programs have been precompiled as executables and packaged with all necessary runtime files for your convenience.
