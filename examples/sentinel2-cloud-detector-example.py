@@ -11,9 +11,11 @@
 # 
 # ### Imports
 
+import os
 import sys
 
-sys.path.append('../dependencies/sentinel2-cloud-detector/examples/')
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../dependencies/sentinel2-cloud-detector/examples/"
+sys.path.append(file_path)
 
 import datetime as dt
 
