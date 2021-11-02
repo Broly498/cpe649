@@ -4,6 +4,7 @@ import sys
 import ftplib
 import io
 import os
+import time
 
 clientIpAddress = '0.0.0.0'
 clientPort = 55556
@@ -24,6 +25,7 @@ if len(sys.argv) > 3:
 compSocket = socket.socket()
 compSocket.bind((clientIpAddress, clientPort))
 compSocket.listen(1)
+print("Start time for encryption: " + str(time.time_ns()), flush=True)
 print("Waiting for client to connect on " + clientIpAddress + ":" + str(clientPort) + "...", flush=True)
 client_socket, client_address = compSocket.accept()
 print("Client connected.", flush=True)
@@ -44,11 +46,12 @@ key_file = file_path + "key_file.bin"
 data_end = b'TRANSMISSION_STOP'
 i = 1
 
-while True:
+while i <= 25:
     # Wait for transmission of compressed file
     print("Waiting for compressed data to be transmitted", flush=True)
     total_data = []
     data = ''
+
     while True:
         data = client_socket.recv(4096)
         if data_end in data:
@@ -67,7 +70,7 @@ while True:
     compressed_data = bytearray()
     compressed_data = b''.join(total_data)
     print("Compressed data received: " + str(sys.getsizeof(compressed_data)), flush=True)
-
+    print("Time Compressed data received :" + str(time.time_ns()), flush=True)
     # Encrypt and store result
     keyfile = open(key_file, "rb")
     key = keyfile.read()

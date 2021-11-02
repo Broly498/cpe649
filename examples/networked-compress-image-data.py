@@ -13,11 +13,13 @@ serverPort = 55555
 isConnected = False
 retryAttempt = 0
 maximumNumberOfRetries = 10
+i = 1
 
 if len(sys.argv) > 1:
     clientIpAddress = sys.argv[1]
 
 npSocket = NumpySocket()
+print("Starting time compression: " + str(time.time_ns()), flush=True)
 print("Starting image data server on port " + str(serverPort) + ".", flush=True)
 npSocket.startServer(serverPort)
 print("Image data server started", flush=True)
@@ -42,10 +44,11 @@ print("Compression data client connected", flush=True)
 file_name = "runtime_image.dat"
 compressed_file_name = "runtime_compressed.dat.gz"
 
-while True:
+while i <= 25:
     print("Waiting for image to be transmitted", flush=True)
     uncompressed_image_data = npSocket.recieve()
     print("Image received: " + str(sys.getsizeof(uncompressed_image_data)), flush=True)
+    print("Time image received: " + str(time.time_ns()), flush=True)
 
     b = BytesIO()
     np.save(b, uncompressed_image_data, allow_pickle=True)
@@ -54,6 +57,7 @@ while True:
     print("Sending compressed data: " + str(sys.getsizeof(compressed_image_data)), flush=True)
     compressed_image_data += b'TRANSMISSION_STOP'
     compSocket.sendall(compressed_image_data)
+    i = i + 1
 
 npSocket.close()
 compSocket.close()
