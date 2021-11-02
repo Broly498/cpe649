@@ -22,7 +22,7 @@ clientPort = 55555
 if len(sys.argv) > 1:
     clientIpAddress = sys.argv[1]
 
-print("Start time cloud discrimination: " + str(time.time_ns()))
+print("Start time cloud discrimination: " + str(time.time_ns()), flush=True)
 print("Attempting to connect to " + clientIpAddress + ":" + str(clientPort) + ".", flush=True)
 
 isConnected = False
@@ -121,9 +121,9 @@ for i in range(1,51):
     if cloud_ratio < 0.5:
         print("Image accepted, transmitting...\n", flush=True)
         npSocket.send(image_data)
-        print("Time image accepted: " + str(time.time_ns()))
+        print("Time image accepted: " + str(time.time_ns()), flush=True)
     else:
         print("Image rejected\n", flush=True)
-        print("Time image rejected :" + str(time.time_ns()))
+        print("Time image rejected :" + str(time.time_ns()), flush=True)
 
 npSocket.close()

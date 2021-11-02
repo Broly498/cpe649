@@ -19,7 +19,7 @@ if len(sys.argv) > 1:
     clientIpAddress = sys.argv[1]
 
 npSocket = NumpySocket()
-print("Starting time compression: " + str(time.time_ns()))
+print("Starting time compression: " + str(time.time_ns()), flush=True)
 print("Starting image data server on port " + str(serverPort) + ".", flush=True)
 npSocket.startServer(serverPort)
 print("Image data server started", flush=True)
@@ -48,7 +48,7 @@ while i <= 25:
     print("Waiting for image to be transmitted", flush=True)
     uncompressed_image_data = npSocket.recieve()
     print("Image received: " + str(sys.getsizeof(uncompressed_image_data)), flush=True)
-    print("Time image received: " + str(time.time_ns()))
+    print("Time image received: " + str(time.time_ns()), flush=True)
 
     b = BytesIO()
     np.save(b, uncompressed_image_data, allow_pickle=True)
