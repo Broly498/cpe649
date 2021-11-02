@@ -8,22 +8,41 @@
 # 
 # ### Imports
 
-import os
-import sys
 #import matplotlib.pyplot as plt
 import numpy as np
 import time
 from s2cloudless import S2PixelCloudDetector
 from numpysocket import NumpySocket
+import sys
+import os
 
-# We are connecting to the image data link
-npSocket = NumpySocket()
-if len(sys.argv) == 2:
-    npSocket.startClient(sys.argv[1], 55555)
-    print("Image data client connected to " + sys.argv[1])
-else:
-    npSocket.startClient('localhost', 55555)
-    print("Image data client connected to localhost")
+clientIpAddress = 'localhost'
+clientPort = 55555
+
+if len(sys.argv) > 1:
+    clientIpAddress = sys.argv[1]
+
+print("Start time cloud discrimination: " + str(time.time_ns()), flush=True)
+print("Attempting to connect to " + clientIpAddress + ":" + str(clientPort) + ".", flush=True)
+
+isConnected = False
+retryAttempt = 0
+maximumNumberOfRetries = 10
+npSocket = NumpySocket()	
+while not isConnected:
+    try:
+        npSocket.startClient(clientIpAddress, clientPort)
+        isConnected = True
+    except Exception:
+        if retryAttempt >= maximumNumberOfRetries:
+            print("Failed to connect, maximum number of retries exceeded.", flush=True)
+            quit()
+        else:
+            retryAttempt += 1
+            print("Failed to connect, retrying in 5 seconds. Retry attempt " + str(retryAttempt) + " out of " + str(maximumNumberOfRetries) + ".", flush=True)
+            time.sleep(5)
+
+print("Image data client connected", flush=True)
 
 # Factor and clip used to increase visibility for plotting
 factor=3.5/255
@@ -34,7 +53,7 @@ file_path = os.path.dirname(os.path.realpath(__file__)) + "/"
 result_file_name = file_path + "runtime_image.dat"
 
 for i in range(1,51):
-    print("Processing image: " + str(i))
+    print("Processing image: " + str(i), flush=True)
     image_file_name = file_path + "image_" + str(i) + ".dat"
     data_file_name = file_path + "data_" + str(i) + ".dat"
 
@@ -42,7 +61,7 @@ for i in range(1,51):
     image_data = np.load(image_file)
     image_file.close()
 
-    print("Candidate image: " + str(i))
+    print("Candidate image: " + str(i), flush=True)
 
     data_file = open(data_file_name, "rb")
     full_data = np.load(data_file)
@@ -76,16 +95,16 @@ for i in range(1,51):
     #cloud_prob = cloud_detector.get_cloud_probability_maps(full_data)
     #print("Cloud probabilities computed. Time: %s" % (time.time() - start_time))
 
-    print("Computing cloud masks")
+    print("Computing cloud masks", flush=True)
     start_time = time.time()
     cloud_mask = cloud_detector.get_cloud_masks(full_data)
-    print("Cloud masks computed. Time: %s" % (time.time() - start_time))
+    print("Cloud masks computed. Time: %s" % (time.time() - start_time), flush=True)
 
     cloud_pixels = np.count_nonzero(cloud_mask)
     total_pixels = np.size(cloud_mask)
-    print("Computed cloud pixels/total pixels: " + str(cloud_pixels) + "/" + str(total_pixels))
+    print("Computed cloud pixels/total pixels: " + str(cloud_pixels) + "/" + str(total_pixels), flush=True)
     cloud_ratio = float(cloud_pixels)/float(total_pixels)
-    print("Cloud ratio: " + str(cloud_ratio))
+    print("Cloud ratio: " + str(cloud_ratio), flush=True)
 
     # Optional, print cloud recognition results
     '''
@@ -100,10 +119,11 @@ for i in range(1,51):
     '''
 
     if cloud_ratio < 0.5:
-        print("Image accepted, transmitting...\n")
+        print("Image accepted, transmitting...\n", flush=True)
         npSocket.send(image_data)
-        
+        print("Time image accepted: " + str(time.time_ns()), flush=True)
     else:
-        print("Image rejected\n")
+        print("Image rejected\n", flush=True)
+        print("Time image rejected :" + str(time.time_ns()), flush=True)
 
 npSocket.close()

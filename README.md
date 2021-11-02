@@ -17,14 +17,13 @@ Repository Contents:
 Shell Scripts:
  * initializeSubmodules.sh
     * Initializes all of the submodule repositories contained inside of the CPE-657 project.
- * buildAllDependencies.sh
-    * Compiles all of the dependencies associated with the CPE-657 project.
+    * NOTE: This script must be executed every time that the repository is cloned for the first time.
+ * Makefile
+    * Compiles the Pi Hat C++ profiler (Make Targets: all, clean).
  * multithreaded_test.sh
     * Runs the sentinel2-cloud detector tests that were exported using the Jupyter notebook.
     * This script spawns four tests and launches them on their own unique core.
- * killImgGenAndFtpPythonProcesses.sh
-    * Kills all Python processes (The Network Encryption, Network Compression, and Network Cloud Discrimination are all Python processes).
- * runImgGenAndFtpWithPiHat.sh
+ * runImageGenerationExperiment_OnePiConfiguration.sh
     * Launches a full image generation experiment.
     * The script performs the following:
        1) Runs Network Encryption Python Script (Encrypts all image files)
@@ -32,10 +31,41 @@ Shell Scripts:
        3) Runs Network Cloud Discrimination Python Script (Generates sentinel2-cloud detector image files) 
        4) Runs Pi Hat Profiler Executable (Records power measurements from the Raspberry Pi)
     * The script expects FOUR COMMAND-LINE ARGUMENTS:
-        * argv1 - FTP Server IP Address (Required)
-        * argv2 - FTP Server Port (Required)
-        * argv3 - Compression Data Client IP Address (Optional - Defaults to localhost if not supplied.)
-        * argv4 - Image Data Client IP Address (Optional - Defaults to localhost if not supplied.)
+       1) argv1 - FTP Server IP Address (Required)
+       2) argv2 - FTP Server Port (Required)
+       3) argv3 - Compression Data Client IP Address (Optional - Defaults to localhost if not supplied.)
+       4) argv4 - Image Data Client IP Address (Optional - Defaults to localhost if not supplied.)
+       5) Encryption Data Client IP Address (Optional - Defaults to 0.0.0.0 if not supplied.)
+ * runFileCompressor_FourPiConfiguration.sh
+    * The script performs the following:
+       1) Runs Network Compression Python Script (Compresses all encrypted files)
+       2) Runs Pi Hat Profiler Executable (Records power measurements from the Raspberry Pi)
+    * The script expects ONE COMMAND-LINE ARGUMENTS:
+       1) argv1 - Compression Data Client IP Address (Optional - Defaults to localhost if not supplied.)
+ * runCloudDiscriminator_FourPiConfiguration.sh
+    * The script performs the following:
+       1) Runs Network Cloud Discrimination Python Script (Generates sentinel2-cloud detector image files) 
+       2) Runs Pi Hat Profiler Executable (Records power measurements from the Raspberry Pi)
+    * The script expects ONE COMMAND-LINE ARGUMENTS:
+       1) argv1 - Image Data Client IP Address (Optional - Defaults to localhost if not supplied.)
+ * runImageEncryptor_FourPiConfiguration.sh
+    * The script performs the following:
+       1) Runs Network Encryption Python Script (Encrypts all image files)
+       2) Runs Pi Hat Profiler Executable (Records power measurements from the Raspberry Pi)
+    * The script expects THREE COMMAND-LINE ARGUMENTS:
+       1) argv1 - FTP Server IP Address (Optional - Defaults to localhost if not supplied.)
+       2) argv2 - FTP Server Port (Optional - Defaults to 21 if not supplied.)
+       3) argv3 - Encryption Data Client IP Address (Optional - Defaults to 0.0.0.0 if not supplied.)
+ * killImageGenerationProcesses.sh
+    * Kills all processes associated with the image generation experiment (Network Encryptor, Network Compressor, Network Cloud Discrimination, and Pi Hat Profiler).
+ * turnOffRaspberryPi4_UsbPorts.sh
+    * Turns off USB ports on the Raspberry Pi 4.
+    * Note: In order for the changes to take effect, this script must be executed every time that the Raspberry Pi 4 is turned on since the settings reset upon system reboot.
+ * changeRaspberryPi4_ScalingGovernor.sh
+    * Changes the Raspberry Pi 4 scaling governor.
+    * The script expects FOUR COMMAND-LINE ARGUMENTS:
+       1) argv1 - Scaling Governor Option (powersave=0, performance=1, ondemand=2)
+    * Note: In order for the changes to take effect, this script must be executed every time that the Raspberry Pi 4 is turned on since the settings reset upon system reboot.
 
 Supplemental Information:
  * The necessary python programs have been precompiled as executables and packaged with all necessary runtime files for your convenience.

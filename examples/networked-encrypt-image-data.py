@@ -1,26 +1,34 @@
-# This script accepts two command-line argument.
-# argv1 = ftpServerIpAddress
-# argv2 = ftpServerPort
-
 from Crypto.Cipher import AES
 import socket as socket
 import sys
 import ftplib
 import io
 import os
+import time
 
-numberOfCommandLineArguments = len(sys.argv) - 1
+clientIpAddress = '0.0.0.0'
+clientPort = 55556
+ftpIpAddress = 'localhost'
+ftpPort = 21
+ftpUsername = 'user'
+ftpPassword = 'password'
 
-if numberOfCommandLineArguments != 2:
-    print(numberOfCommandLineArguments)
-    raise Exception("Two command-line arguments must be specified (argv1 = FTP Server IP Address, argv2 = FTP Server Socket)...")
+if len(sys.argv) > 1:
+    clientIpAddress = sys.argv[1]
 
-# This is the host of the compressed data link
+if len(sys.argv) > 2:
+    ftpIpAddress = sys.argv[2]
+
+if len(sys.argv) > 3:
+    ftpPort = int(sys.argv[3])
+
 compSocket = socket.socket()
-compSocket.bind(('', 55556))
+compSocket.bind((clientIpAddress, clientPort))
 compSocket.listen(1)
-print("Waiting for client to connect...")
+print("Start time for encryption: " + str(time.time_ns()), flush=True)
+print("Waiting for client to connect on " + clientIpAddress + ":" + str(clientPort) + "...", flush=True)
 client_socket, client_address = compSocket.accept()
+print("Client connected.", flush=True)
 
 ftp_server = ftplib.FTP()
 # Note: You will need to modify ip/port/credentials for 
@@ -28,13 +36,8 @@ ftp_server = ftplib.FTP()
 # create a mount point for the virtual path '/'.
 # Also also remember you will probably have to disable
 # windows defender firewall for FTP server on windows.
-
-# Parse FTP Server IP Address and Port
-ftpServerIpAddress = sys.argv[1]
-ftpServerPort = int(sys.argv[2])
-
-ftp_server.connect(ftpServerIpAddress,ftpServerPort)
-ftp_server.login('user','password')
+ftp_server.connect(ftpIpAddress, ftpPort)
+ftp_server.login(ftpUsername, ftpPassword)
 
 file_path = os.path.dirname(os.path.realpath(__file__)) + "/"
 
@@ -43,30 +46,31 @@ key_file = file_path + "key_file.bin"
 data_end = b'TRANSMISSION_STOP'
 i = 1
 
-while True:
+while i <= 25:
     # Wait for transmission of compressed file
-    print("Waiting for compressed data to be transmitted")
+    print("Waiting for compressed data to be transmitted", flush=True)
     total_data = []
     data = ''
+
     while True:
         data = client_socket.recv(4096)
         if data_end in data:
-            print("Terminating sequence found")
+            print("Terminating sequence found", flush=True)
             total_data.append(data[:data.find(data_end)])
             break
         total_data.append(data)
         if len(total_data) > 1:
             last_pair = total_data[-2]+total_data[-1]
             if data_end in last_pair:
-                print("Terminating sequence found split across packets")
+                print("Terminating sequence found split across packets", flush=True)
                 total_data[-2] = last_pair[:last_pair.find(data_end)]
                 total_data.pop()
                 break
 
     compressed_data = bytearray()
     compressed_data = b''.join(total_data)
-    print("Compressed data received: " + str(sys.getsizeof(compressed_data)))
-
+    print("Compressed data received: " + str(sys.getsizeof(compressed_data)), flush=True)
+    print("Time Compressed data received :" + str(time.time_ns()), flush=True)
     # Encrypt and store result
     keyfile = open(key_file, "rb")
     key = keyfile.read()
