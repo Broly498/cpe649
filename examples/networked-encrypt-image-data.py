@@ -46,11 +46,12 @@ key_file = file_path + "key_file.bin"
 data_end = b'TRANSMISSION_STOP'
 i = 1
 
-while True:
+while i >= 25:
     # Wait for transmission of compressed file
     print("Waiting for compressed data to be transmitted", flush=True)
     total_data = []
     data = ''
+
     while True:
         data = client_socket.recv(4096)
         if data_end in data:
