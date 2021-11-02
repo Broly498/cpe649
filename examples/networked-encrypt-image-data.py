@@ -46,7 +46,7 @@ key_file = file_path + "key_file.bin"
 data_end = b'TRANSMISSION_STOP'
 i = 1
 
-while i >= 25:
+while i <= 25:
     # Wait for transmission of compressed file
     print("Waiting for compressed data to be transmitted", flush=True)
     total_data = []

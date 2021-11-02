@@ -44,7 +44,7 @@ print("Compression data client connected", flush=True)
 file_name = "runtime_image.dat"
 compressed_file_name = "runtime_compressed.dat.gz"
 
-while i >= 25:
+while i <= 25:
     print("Waiting for image to be transmitted", flush=True)
     uncompressed_image_data = npSocket.recieve()
     print("Image received: " + str(sys.getsizeof(uncompressed_image_data)), flush=True)
