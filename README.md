@@ -66,6 +66,11 @@ Shell Scripts:
     * The script expects FOUR COMMAND-LINE ARGUMENTS:
        1) argv1 - Scaling Governor Option (powersave=0, performance=1, ondemand=2)
     * Note: In order for the changes to take effect, this script must be executed every time that the Raspberry Pi 4 is turned on since the settings reset upon system reboot.
+ * runPiHatProfiler.sh
+    * Runs the Pi Hat Profiler at the designated sampling rate and writes the output to a time-stamped CSV file.
+    * The script expects TWO COMMAND-LINE ARGUENTS:
+       1) argv1 - Sampling Rate in milliseconds (Optional, defaults to 10 ms if not provided).
+       2) argv2 - Experiment Name which is appended to the output CSV filename (Optional, defaults to "idleRun" if not provided).
 
 Supplemental Information:
  * The necessary python programs have been precompiled as executables and packaged with all necessary runtime files for your convenience.
